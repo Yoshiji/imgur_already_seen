@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+
+  "name": "Imgur Already Seen",
+  "description": "This extension will remember the images you have seen on Imgur.com",
+  "version": "1.0",
+
+  "browser_action": {
+    "default_icon": "images/imgur-96x96.png",
+    "default_popup": "views/popup.html"
+  },
+
+  "background": {
+    "page": "views/popup.html"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.imgur.com/gallery/*"],
+      "js": [
+        "plugins/jquery-3.1.1.min.js",
+        "plugins/date_format-1.2.js",
+        "javascript/data_storage.js",
+        "javascript/current_image_context.js",
+        "javascript/next_images_context.js",
+        "javascript/main.js"
+      ]
+    }
+  ],
+
+  "permissions": [
+    "activeTab",
+    "storage"
+  ]
+}
